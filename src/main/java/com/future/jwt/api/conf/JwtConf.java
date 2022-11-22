@@ -1,5 +1,7 @@
 package com.future.jwt.api.conf;
 
+import com.future.jwt.model.BasePayload;
+
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -10,7 +12,7 @@ import java.util.function.Function;
  * @author liuyunfei
  */
 @SuppressWarnings("AlibabaAbstractMethodOrInterfaceMethodMustUseJavadoc")
-public interface JwtConf<T> {
+public interface JwtConf<T extends BasePayload> {
 
     Long getMaxExpiresMillis();
 

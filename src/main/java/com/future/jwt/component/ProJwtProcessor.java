@@ -9,6 +9,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.future.base.model.exps.ProException;
 import com.future.base.util.base.ProChecker;
 import com.future.jwt.api.conf.JwtConf;
+import com.future.jwt.model.BasePayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +40,7 @@ import static org.apache.commons.lang3.StringUtils.*;
  * @author liuyunfei
  */
 @SuppressWarnings({"WeakerAccess", "JavaDoc", "AliControlFlowStatementWithoutBraces", "SimplifyStreamApiCallChains"})
-public final class ProJwtProcessor<T> implements JwtProcessor<T> {
+public final class ProJwtProcessor<T extends BasePayload> implements JwtProcessor<T> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProJwtProcessor.class);
 
@@ -347,7 +348,7 @@ public final class ProJwtProcessor<T> implements JwtProcessor<T> {
      * @param conf
      * @param <T>
      */
-    private static <T> void assertConf(JwtConf<T> conf) {
+    private static <T extends BasePayload> void assertConf(JwtConf<T> conf) {
         Long minExpiresMillis = conf.getMinExpiresMillis();
         if (isNull(minExpiresMillis) || minExpiresMillis < 0L)
             throw new RuntimeException("minExpiresMillis can't be null or less than 0L");

@@ -1,12 +1,14 @@
 package com.future.jwt.component;
 
+import com.future.jwt.model.BasePayload;
+
 /**
  * JWT processor interface
  *
  * @author liuyunfei
  */
 @SuppressWarnings({"JavaDoc", "unused"})
-public interface JwtProcessor<T> {
+public interface JwtProcessor<T extends BasePayload> {
 
     /**
      * create jwt
